@@ -7,12 +7,12 @@
 --
 
 local function hgetall(hash_key)
-    local flat_map = redis.call('HGETALL', hash_key)
-    local result = {}
-    for i = 1, #flat_map, 2 do
-        result[flat_map[i]] = flat_map[i + 1]
-    end
-    return result
+	local flat_map = redis.call('HGETALL', hash_key)
+	local result = {}
+	for i = 1, #flat_map, 2 do
+		result[flat_map[i]] = flat_map[i + 1]
+	end
+	return result
 end
 
 local data = hgetall(ARGV[1])
